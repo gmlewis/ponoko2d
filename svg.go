@@ -4,8 +4,9 @@ package svg
 // package main
 //
 // 	import (
-// 		"github.com/ajstarks/svgo"
 // 		"os"
+//
+// 		"github.com/gmlewis/ponoko2d"
 // 	)
 //
 // 	var (
@@ -24,10 +25,9 @@ package svg
 //
 
 import (
+	"encoding/xml"
 	"fmt"
 	"io"
-
-	"encoding/xml"
 	"strings"
 )
 

@@ -33,13 +33,13 @@ Metadata elements
 
 Usage: (assuming GOPATH is set)
 
-	go get github.com/ajstarks/svgo
-	go install github.com/ajstarks/svgo/...
+	go get github.com/gmlewis/ponoko2d
+	go install github.com/gmlewis/ponoko2d/...
 
 
 You can use godoc to browse the documentation from the command line:
 
-	$ godoc github.com/ajstarks/svgo
+	$ godoc github.com/gmlewis/ponoko2d
 
 
 a minimal program, to generate SVG to standard output.
@@ -47,7 +47,7 @@ a minimal program, to generate SVG to standard output.
 	package main
 
 	import (
-		"github.com/ajstarks/svgo"
+		"github.com/gmlewis/ponoko2d"
 		"os"
 	)
 
@@ -67,7 +67,7 @@ Drawing in a web server: (http://localhost:2003/circle)
 
 	import (
 		"log"
-		"github.com/ajstarks/svgo"
+		"github.com/gmlewis/ponoko2d"
 		"net/http"
 	)
 
@@ -99,7 +99,7 @@ The SVG type:
 	type SVG struct {
         Writer   io.Writer
 	}
-	
+
 Most operations are methods on this type, specifying the destination io.Writer.
 
 The Offcolor type:

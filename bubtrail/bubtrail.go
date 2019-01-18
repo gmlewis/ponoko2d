@@ -10,7 +10,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/ajstarks/svgo"
+	"github.com/gmlewis/ponoko2d"
 )
 
 var (

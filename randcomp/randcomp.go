@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/ajstarks/svgo"
+	"github.com/gmlewis/ponoko2d"
 )
 
 var canvas = svg.New(os.Stdout)

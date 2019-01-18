@@ -10,7 +10,7 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/ajstarks/svgo"
+	"github.com/gmlewis/ponoko2d"
 )
 
 // FlickrResp defines the Flickr response

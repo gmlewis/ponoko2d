@@ -4,7 +4,7 @@ package svg
 // package main
 //
 // 	import (
-// 		"github.com/ajstarks/svgo/float"
+// 		"github.com/gmlewis/ponoko2d/float"
 // 		"os"
 // 	)
 //
@@ -24,10 +24,9 @@ package svg
 //
 
 import (
+	"encoding/xml"
 	"fmt"
 	"io"
-
-	"encoding/xml"
 	"strings"
 )
 

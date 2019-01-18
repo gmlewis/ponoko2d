@@ -10,7 +10,7 @@ import (
 	"math"
 	"os"
 
-	"github.com/ajstarks/svgo"
+	"github.com/gmlewis/ponoko2d"
 )
 
 // rawdata defines data as float64 x,y coordinates

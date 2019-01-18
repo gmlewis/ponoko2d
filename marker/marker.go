@@ -4,8 +4,9 @@
 package main
 
 import (
-	"github.com/ajstarks/svgo"
 	"os"
+
+	"github.com/gmlewis/ponoko2d"
 )
 
 func main() {
