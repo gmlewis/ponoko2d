@@ -12,7 +12,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ajstarks/svgo"
+	"github.com/gmlewis/ponoko2d"
 )
 
 // geometry defines the layout of the visualization

@@ -10,7 +10,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/ajstarks/svgo"
+	"github.com/gmlewis/ponoko2d"
 )
 
 // SVG is a SVG document

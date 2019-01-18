@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/ajstarks/svgo"
+	"github.com/gmlewis/ponoko2d"
 )
 
 // shotdata defines the shotchart JSON response from stats.nba.com
@@ -37,8 +37,8 @@ func vmap(value, low1, high1, low2, high2 float64) float64 {
 }
 
 const (
-	shotsURLfmt = "http://stats.nba.com/stats/shotchartdetail?PlayerID=%s&CFID=33&CFPARAMS=2014-15&ContextFilter=&ContextMeasure=FGA&DateFrom=&DateTo=&GameID=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlusMinus=N&Position=&Rank=N&RookieYear=&Season=2014-15&SeasonSegment=&SeasonType=Regular+Season&TeamID=0&VsConference=&VsDivision=&mode=Advanced&showDetails=0&showShots=1&showZones=0"
-	picURLfmt   = "http://stats.nba.com/media/players/230x185/%s.png"
+	shotsURLfmt     = "http://stats.nba.com/stats/shotchartdetail?PlayerID=%s&CFID=33&CFPARAMS=2014-15&ContextFilter=&ContextMeasure=FGA&DateFrom=&DateTo=&GameID=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlusMinus=N&Position=&Rank=N&RookieYear=&Season=2014-15&SeasonSegment=&SeasonType=Regular+Season&TeamID=0&VsConference=&VsDivision=&mode=Advanced&showDetails=0&showShots=1&showZones=0"
+	picURLfmt       = "http://stats.nba.com/media/players/230x185/%s.png"
 	activepicURLfmt = "http://stats.nba.com/media/players/700/%s.png"
 )
 

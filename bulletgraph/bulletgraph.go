@@ -13,7 +13,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ajstarks/svgo"
+	"github.com/gmlewis/ponoko2d"
 )
 
 var (

@@ -8,7 +8,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/ajstarks/svgo"
+	"github.com/gmlewis/ponoko2d"
 	"honnef.co/go/tools/structlayout"
 )
 

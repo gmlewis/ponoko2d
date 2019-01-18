@@ -5,9 +5,10 @@ import (
 	"encoding/xml"
 	"flag"
 	"fmt"
-	"github.com/ajstarks/svgo"
 	"io"
 	"os"
+
+	"github.com/gmlewis/ponoko2d"
 )
 
 // <thing top="100" left="100" sep="100">

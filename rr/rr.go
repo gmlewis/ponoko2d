@@ -5,11 +5,12 @@ import (
 	"encoding/xml"
 	"flag"
 	"fmt"
-	"github.com/ajstarks/svgo"
 	"io"
 	"math"
 	"os"
 	"strings"
+
+	"github.com/gmlewis/ponoko2d"
 )
 
 var (
