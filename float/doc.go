@@ -1,5 +1,5 @@
 /*
-Package svg generates SVG as defined by the Scalable Vector Graphics 1.1 Specification (<http://www.w3.org/TR/SVG11/>).
+Package ponoko2d generates SVG as defined by the Scalable Vector Graphics 1.1 Specification (<http://www.w3.org/TR/SVG11/>).
 Output goes to the specified io.Writer.
 
 Supported SVG elements and functions
@@ -46,8 +46,9 @@ a minimal program, to generate SVG to standard output.
 	package main
 
 	import (
-		"github.com/gmlewis/ponoko2d/float"
 		"os"
+
+		"github.com/gmlewis/ponoko2d/float"
 	)
 
 	func main() {
@@ -66,8 +67,9 @@ Drawing in a web server: (http://localhost:2003/circle)
 
 	import (
 		"log"
-		"github.com/gmlewis/ponoko2d"
 		"net/http"
+
+		"github.com/gmlewis/ponoko2d"
 	)
 
 	func main() {
@@ -122,4 +124,4 @@ The Filterspec type:
 is used to specify inputs and results for filter effects
 
 */
-package svg
+package ponoko2d
