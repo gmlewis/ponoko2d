@@ -1,4 +1,8 @@
-# SVGo: A Go library for SVG generation #
+# Ponoko2D: A Go library for SVG generation #
+
+[Godocs](http://godoc.org/github.com/gmlewis/ponoko2d)
+
+This library is a fork of [SVGo](http://github.com/ajstarks/svgo) with the primary change of adding some easy-to-use templates for Ponoko designs.
 
 The library generates SVG as defined by the Scalable Vector Graphics 1.1 Specification (<http://www.w3.org/TR/SVG11/>).
 Output goes to the specified io.Writer.
@@ -53,8 +57,9 @@ a minimal program, to generate SVG to standard output.
 	package main
 
 	import (
-		"github.com/gmlewis/ponoko2d"
 		"os"
+
+		"github.com/gmlewis/ponoko2d"
 	)
 
 	func main() {
@@ -73,8 +78,9 @@ Drawing in a web server: (http://localhost:2003/circle)
 
 	import (
 		"log"
-		"github.com/gmlewis/ponoko2d"
 		"net/http"
+
+		"github.com/gmlewis/ponoko2d"
 	)
 
 	func main() {
@@ -95,11 +101,11 @@ Drawing in a web server: (http://localhost:2003/circle)
 
 You may view the SVG output with a browser that supports SVG (tested on Chrome, Opera, Firefox and Safari), or any other SVG user-agent such as Batik Squiggle.
 
-### Graphics Sketching with SVGo and svgplay ###
+### Graphics Sketching with Ponoko2D and svgplay ###
 
-Combined with the svgplay command, SVGo can be used to "sketch" with code in a browser.
+Combined with the svgplay command, Ponoko2D can be used to "sketch" with code in a browser.
 
-To use svgplay and SVGo, first go to a directory with your code, and run:
+To use svgplay and Ponoko2D, first go to a directory with your code, and run:
 
 	$ svgplay
 	2014/06/25 22:05:28 ☠ ☠ ☠ Warning: this server allows a client connecting to 127.0.0.1:1999 to execute code on this computer ☠ ☠ ☠
