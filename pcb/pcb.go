@@ -10,12 +10,12 @@ import (
 )
 
 var (
-	step  = flag.Float64("step", 0.1, "Angle step for greating spiral in radians")
+	step  = flag.Float64("step", 0.01, "Angle step for greating spiral in radians")
 	n     = flag.Int("n", 100, "Number of turns in each coil")
 	gap   = flag.Float64("gap", 0.1, "Gap between traces in mm")
 	trace = flag.Float64("trace", 0.1, "Trace width in mm")
 
-	canvas        = ponoko2d.New(os.Stdout)
+	canvas        *ponoko2d.SVG
 	width, height float64
 	start, end    float64
 )
@@ -24,6 +24,17 @@ func background(v int) { canvas.Rect(0, 0, width, height, canvas.RGB(v, v, v)) }
 
 func main() {
 	flag.Parse()
+
+	makeTop("top.svg")
+}
+
+func makeTop(filename string) {
+	f, err := os.Create(filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
+	canvas = ponoko2d.New(f)
 
 	start = 2 * math.Pi
 	end = start + float64(*n)*2*math.Pi
