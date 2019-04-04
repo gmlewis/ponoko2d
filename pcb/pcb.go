@@ -34,7 +34,7 @@ func makeTop(filename string) {
 		log.Fatal(err)
 	}
 	defer f.Close()
-	canvas = ponoko2d.New(f)
+	canvas = ponoko2d.NewP1(f)
 
 	start = 2 * math.Pi
 	end = start + float64(*n)*2*math.Pi
@@ -49,13 +49,13 @@ func makeTop(filename string) {
 	height = width
 	log.Printf("n=%v: (%.2f,%.2f)", *n, width, height)
 
-	canvas.Start(width, height)
-	background(255)
-
+	// background(255)
+	canvas.Translate(canvas.CenterX-0.5*width, canvas.CenterY-0.5*height)
 	genSpiral(0)
 	genSpiral(math.Pi)
+	canvas.Gend()
 
-	canvas.Grid(0, 0, width, height, 10, "stroke:black;opacity:0.1")
+	// canvas.Grid(0, 0, width, height, 10, "stroke:black;opacity:0.1")
 	canvas.End()
 }
 
