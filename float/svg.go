@@ -453,6 +453,31 @@ func (svg *SVG) Text(x float64, y float64, t string, s ...string) {
 	svg.println(`</text>`)
 }
 
+// Textspan begins text, assuming a tspan will be included, end with TextEnd()
+// Standard Reference: https://www.w3.org/TR/SVG11/text.html#TSpanElement
+func (svg *SVG) Textspan(x float64, y float64, t string, s ...string) {
+	svg.printf(`<text %s %s`, loc(x, y, svg.Decimals), endstyle(s, ">"))
+	xml.Escape(svg.Writer, []byte(t))
+}
+
+// Span makes styled spanned text, should be proceeded by Textspan
+// Standard Reference: https://www.w3.org/TR/SVG11/text.html#TSpanElement
+func (svg *SVG) Span(t string, s ...string) {
+	if len(s) == 0 {
+		xml.Escape(svg.Writer, []byte(t))
+		return
+	}
+	svg.printf(`<tspan %s`, endstyle(s, ">"))
+	xml.Escape(svg.Writer, []byte(t))
+	svg.printf(`</tspan>`)
+}
+
+// TextEnd ends spanned text
+// Standard Reference: https://www.w3.org/TR/SVG11/text.html#TSpanElement
+func (svg *SVG) TextEnd() {
+	svg.println(`</text>`)
+}
+
 // Textpath places text optionally styled text along a previously defined path
 // Standard Reference: http://www.w3.org/TR/SVG11/text.html#TextPathElement
 func (svg *SVG) Textpath(t string, pathid string, s ...string) {
@@ -651,7 +676,7 @@ func (svg *SVG) FeDistantLight(fs Filterspec, azimuth, elevation float64, s ...s
 // FeFlood specifies a flood filter primitive
 // Standard reference: http://www.w3.org/TR/SVG11/filters.html#feFloodElement
 func (svg *SVG) FeFlood(fs Filterspec, color string, opacity float64, s ...string) {
-	svg.printf(`<feFlood %s flood-fill-color="%s" flood-fill-opacity="%g" %s`,
+	svg.printf(`<feFlood %s flood-color="%s" flood-opacity="%g" %s`,
 		fsattr(fs), color, opacity, endstyle(s, emptyclose))
 }
 
@@ -857,6 +882,52 @@ func (svg *SVG) Sepia() {
 	svg.FeColorMatrix(Filterspec{}, sepiamatrix)
 }
 
+// Animation
+
+// Animate animates the specified link, using the specified attribute
+// The animation starts at coordinate from, terminates at to, and repeats as specified
+func (svg *SVG) Animate(link, attr string, from, to, duration float64, repeat float64, s ...string) {
+	svg.printf(`<animate %s attributeName="%s" from="%g" to="%g" dur="%gs" repeatCount="%s" %s`,
+		href(link), attr, from, to, duration, repeatString(repeat), endstyle(s, emptyclose))
+}
+
+// AnimateMotion animates the referenced object along the specified path
+func (svg *SVG) AnimateMotion(link, path string, duration float64, repeat float64, s ...string) {
+	svg.printf(`<animateMotion %s dur="%gs" repeatCount="%s" %s<mpath %s/></animateMotion>
+`, href(link), duration, repeatString(repeat), endstyle(s, ">"), href(path))
+}
+
+// AnimateTransform animates in the context of SVG transformations
+func (svg *SVG) AnimateTransform(link, ttype, from, to string, duration float64, repeat float64, s ...string) {
+	svg.printf(`<animateTransform %s attributeName="transform" type="%s" from="%s" to="%s" dur="%gs" repeatCount="%s" %s`,
+		href(link), ttype, from, to, duration, repeatString(repeat), endstyle(s, emptyclose))
+}
+
+// AnimateTranslate animates the translation transformation
+func (svg *SVG) AnimateTranslate(link string, fx, fy, tx, ty float64, duration float64, repeat float64, s ...string) {
+	svg.AnimateTransform(link, "translate", coordpair(fx, fy), coordpair(tx, ty), duration, repeat, s...)
+}
+
+// AnimateRotate animates the rotation transformation
+func (svg *SVG) AnimateRotate(link string, fs, fc, fe, ts, tc, te float64, duration float64, repeat float64, s ...string) {
+	svg.AnimateTransform(link, "rotate", sce(fs, fc, fe), sce(ts, tc, te), duration, repeat, s...)
+}
+
+// AnimateScale animates the scale transformation
+func (svg *SVG) AnimateScale(link string, from, to, duration float64, repeat float64, s ...string) {
+	svg.AnimateTransform(link, "scale", fmt.Sprintf("%g", from), fmt.Sprintf("%g", to), duration, repeat, s...)
+}
+
+// AnimateSkewX animates the skewX transformation
+func (svg *SVG) AnimateSkewX(link string, from, to, duration float64, repeat float64, s ...string) {
+	svg.AnimateTransform(link, "skewX", fmt.Sprintf("%g", from), fmt.Sprintf("%g", to), duration, repeat, s...)
+}
+
+// AnimateSkewY animates the skewY transformation
+func (svg *SVG) AnimateSkewY(link string, from, to, duration float64, repeat float64, s ...string) {
+	svg.AnimateTransform(link, "skewY", fmt.Sprintf("%g", from), fmt.Sprintf("%g", to), duration, repeat, s...)
+}
+
 // Utility
 
 // Grid draws a grid at the specified coordinate, dimensions, and spacing, with optional style.
@@ -879,6 +950,25 @@ func (svg *SVG) Grid(x float64, y float64, w float64, h float64, n float64, s ..
 }
 
 // Support functions
+
+// coordpair returns a coordinate pair as a string
+func coordpair(x, y float64) string {
+	return fmt.Sprintf("%g %g", x, y)
+}
+
+// sce makes start, center, end coordinates string for animate transformations
+func sce(start, center, end float64) string {
+	return fmt.Sprintf("%g %g %g", start, center, end)
+}
+
+// repeatString computes the repeat string for animation methods
+// repeat <= 0 --> "indefinite", otherwise the integer string
+func repeatString(n float64) string {
+	if n > 0 {
+		return fmt.Sprintf("%g", n)
+	}
+	return "indefinite"
+}
 
 // style returns a style name,attribute string
 func style(s string) string {

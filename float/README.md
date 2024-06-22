@@ -25,6 +25,10 @@ Output goes to the specified io.Writer, operation occur with Go's float64 type.
 
  translate, rotate, scale, skewX, skewY
 
+### Animation ###
+ animate, animateMotion, animateTranslate, animateRotate, animateScale, animateSkewX, animateSkewY
+ 
+ 
 ### Filter Effects
 
  filter, feBlend, feColorMatrix, feColorMatrix, feComponentTransfer, feComposite, feConvolveMatrix, feDiffuseLighting,
@@ -443,6 +447,17 @@ is used to specify inputs and results for filter effects
   Place the specified text, t at x,y according to the style specified in s.
   <http://www.w3.org/TR/SVG11/text.html#TextElement>
 
+	Textspan(x float64, y float64, t string, s ...string)
+Place specified text, t at x,y according to the optional style specified in s.
+<https://www.w3.org/TR/SVG11/text.html#TSpanElement>
+Use this method with Span(...). End with TextEnd()
+
+	Span(t string, s ...string)
+Create a text span t, using optional style s
+
+	TextEnd()
+End a text span
+  
 	Textlines(x, y float64, s []string, size, spacing float64, fill, align string)
  Places lines of text in s, starting at x,y, at the specified size, fill, and alignment, and spacing.
 
@@ -480,6 +495,43 @@ is used to specify inputs and results for filter effects
   <http://www.w3.org/TR/SVG11/pservers.html#RadialGradients>
 
   ![RadialGradient](http://farm2.static.flickr.com/1302/5187954065_7ddba7b819.jpg)
+
+### Animation ###
+
+	Animate(link, attr string, from, to float64, duration float64, repeat float64, s ...string)
+Animate animates the item referenced by the link, using the specified attribute
+The animation starts at coordinate from, terminates at to, and repeats as specified.
+Addtional attributes may be added as needed.
+<https://www.w3.org/TR/SVG11/animate.html#AnimateElement>
+
+	AnimateMotion(link, path string, duration float64, repeat float64, s ...string) 
+AnimateMotion animates the referenced object ```link``` along the specified ```path```
+<https://www.w3.org/TR/SVG11/animate.html#AnimateMotionElement>
+
+	
+	AnimateTranslate(link string, fx, fy, tx, ty float64, duration float64, repeat float64, s ...string)
+AnimateTranslate animates the translation transformation (link refers to the object to animate, fx, fy are from coordinates, tx, ty are the to coordinates)
+<https://www.w3.org/TR/SVG11/animate.html#AnimateTransformElement>
+	
+	AnimateRotate(link string, fs, fc, fe, ts, tc, te float64, duration float64, repeat float64, s ...string)
+AnimateRotate animates the rotation transformation (link refers to the object to animate, f[s,c,e] are the from start, center, and end angles, t[s,c,e] are the 
+start, center, and end angles)
+<https://www.w3.org/TR/SVG11/animate.html#AnimateTransformElement>
+
+	
+	AnimateScale(link string, from, to, duration float64, repeat float64, s ...string)
+AnimateScale animates the scale transformation (link refers to the object to animate, from and to specify the scaling factor)
+<https://www.w3.org/TR/SVG11/animate.html#AnimateTransformElement>
+
+	
+	AnimateSkewX(link string, from, to, duration float64, repeat float64, s ...string)
+AnimateSkewX animates the skewX transformation ((link refers to the object to animate, from and to specify the skew angle)
+<https://www.w3.org/TR/SVG11/animate.html#AnimateTransformElement>
+
+	
+	AnimateSkewY(link string, from, to, duration float64, repeat float64, s ...string)
+AnimateSkewY animates the skewY transformation (link refers to the object to animate, and from and to specify the skew angle)
+<https://www.w3.org/TR/SVG11/animate.html#AnimateTransformElement>
 
 ### Filter Effects ###
 
