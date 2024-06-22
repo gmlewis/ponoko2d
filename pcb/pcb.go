@@ -1,3 +1,11 @@
+// -*- compile-command: "go run pcb.go -out top.svg"; -*-
+
+// pcb is an example of using the ponoko2d library to create a 2D SVG
+// design that can be sent to Ponoko.com for fabrication.
+//
+// To run this program, type:
+//
+//	go run pcb.go -out top.svg
 package main
 
 import (
@@ -6,14 +14,15 @@ import (
 	"math"
 	"os"
 
-	"github.com/gmlewis/ponoko2d/float"
+	ponoko2d "github.com/gmlewis/ponoko2d/float"
 )
 
 var (
-	step  = flag.Float64("step", 0.01, "Angle step for greating spiral in radians")
-	n     = flag.Int("n", 100, "Number of turns in each coil")
-	gap   = flag.Float64("gap", 0.1, "Gap between traces in mm")
-	trace = flag.Float64("trace", 0.1, "Trace width in mm")
+	gap     = flag.Float64("gap", 0.1, "Gap between traces in mm")
+	n       = flag.Int("n", 100, "Number of turns in each coil")
+	outName = flag.String("out", "top.svg", "Output filename")
+	step    = flag.Float64("step", 0.01, "Angle step for greating spiral in radians")
+	trace   = flag.Float64("trace", 0.1, "Trace width in mm")
 
 	canvas        *ponoko2d.SVG
 	width, height float64
@@ -25,7 +34,7 @@ func background(v int) { canvas.Rect(0, 0, width, height, canvas.RGB(v, v, v)) }
 func main() {
 	flag.Parse()
 
-	makeTop("top.svg")
+	makeTop(*outName)
 }
 
 func makeTop(filename string) {

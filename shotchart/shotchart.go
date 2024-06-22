@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/gmlewis/ponoko2d"
+	svg "github.com/gmlewis/ponoko2d"
 )
 
 // shotdata defines the shotchart JSON response from stats.nba.com

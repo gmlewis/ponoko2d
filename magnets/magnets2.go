@@ -1,9 +1,10 @@
+// -*- compile-command: "go run magnets2.go -magnets > magnets2.svg"; -*-
+
 // magnets2 is an example of using the ponoko2d library to create a 2D SVG
 // design that can be sent to Ponoko.com for fabrication.
 //
 // To run this program, type:
 // go run magnets2.go -magnets > magnets2.svg
-//
 package main
 
 import (
@@ -11,7 +12,7 @@ import (
 	"math"
 	"os"
 
-	"github.com/gmlewis/ponoko2d/float"
+	ponoko2d "github.com/gmlewis/ponoko2d/float"
 )
 
 var (

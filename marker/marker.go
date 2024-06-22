@@ -1,4 +1,5 @@
 // marker test
+//go:build !appengine
 // +build !appengine
 
 package main
@@ -6,7 +7,7 @@ package main
 import (
 	"os"
 
-	"github.com/gmlewis/ponoko2d"
+	svg "github.com/gmlewis/ponoko2d"
 )
 
 func main() {

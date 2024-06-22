@@ -1,4 +1,5 @@
 // svgdef -  SVG Object Definition and Use
+//go:build !appengine
 // +build !appengine
 
 package main
@@ -7,7 +8,7 @@ import (
 	"math"
 	"os"
 
-	"github.com/gmlewis/ponoko2d"
+	svg "github.com/gmlewis/ponoko2d"
 )
 
 const (

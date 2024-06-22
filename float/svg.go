@@ -1,4 +1,4 @@
-// Package ponoko2d provides an API for generating Scalable Vector Graphics (SVG), using floating point units
+// Package ponoko2d provides an API for generating Scalable Vector Graphics (SVG), using floating point units.
 package ponoko2d
 
 // package main
@@ -6,7 +6,7 @@ package ponoko2d
 // 	import (
 // 		"os"
 //
-// 		"github.com/gmlewis/ponoko2d/float"
+// 		ponoko2d "github.com/gmlewis/ponoko2d/float"
 // 	)
 //
 // 	var (

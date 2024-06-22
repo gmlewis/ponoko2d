@@ -62,7 +62,7 @@ a minimal program, to generate SVG to standard output.
 	import (
 		"os"
 
-		"github.com/gmlewis/ponoko2d/float"
+		svg "github.com/gmlewis/ponoko2d/float"
 	)
 
 	func main() {
@@ -83,7 +83,7 @@ Drawing in a web server: (http://localhost:2003/circle)
 		"log"
 		"net/http"
 
-		"github.com/gmlewis/ponoko2d/float"
+		svg "github.com/gmlewis/ponoko2d/float"
 	)
 
 	func main() {

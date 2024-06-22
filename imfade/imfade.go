@@ -1,4 +1,5 @@
 // imfade progressively fades the Go gopher image
+//go:build !appengine
 // +build !appengine
 
 package main
@@ -7,7 +8,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/gmlewis/ponoko2d"
+	svg "github.com/gmlewis/ponoko2d"
 )
 
 var canvas = svg.New(os.Stdout)

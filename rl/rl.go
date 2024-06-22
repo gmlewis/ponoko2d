@@ -1,4 +1,5 @@
 // rl - draw random lines
+//go:build !appengine
 // +build !appengine
 
 package main
@@ -9,7 +10,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/gmlewis/ponoko2d"
+	svg "github.com/gmlewis/ponoko2d"
 )
 
 var canvas = svg.New(os.Stdout)

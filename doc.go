@@ -2,53 +2,51 @@
 Package svg generates SVG as defined by the Scalable Vector Graphics 1.1 Specification (<http://www.w3.org/TR/SVG11/>).
 Output goes to the specified io.Writer.
 
-Supported SVG elements and functions
+# Supported SVG elements and functions
 
 Shapes, lines, text
 
- circle, ellipse, polygon, polyline, rect (including roundrects), line, text
+	circle, ellipse, polygon, polyline, rect (including roundrects), line, text
 
 Paths
 
- general, arc, cubic and quadratic bezier paths,
+	general, arc, cubic and quadratic bezier paths,
 
 Image and Gradients
 
- image, linearGradient, radialGradient,
+	image, linearGradient, radialGradient,
 
 Transforms
 
- translate, rotate, scale, skewX, skewY
+	translate, rotate, scale, skewX, skewY
 
 Filter Effects
 
- filter, feBlend, feColorMatrix, feColorMatrix, feComponentTransfer, feComposite, feConvolveMatrix, feDiffuseLighting,
- feDisplacementMap, feDistantLight, feFlood, feGaussianBlur, feImage, feMerge, feMorphology, feOffset, fePointLight,
- feSpecularLighting, feSpotLight,feTile, feTurbulence
-
+	filter, feBlend, feColorMatrix, feColorMatrix, feComponentTransfer, feComposite, feConvolveMatrix, feDiffuseLighting,
+	feDisplacementMap, feDistantLight, feFlood, feGaussianBlur, feImage, feMerge, feMorphology, feOffset, fePointLight,
+	feSpecularLighting, feSpotLight,feTile, feTurbulence
 
 Metadata elements
 
- desc, defs, g (style, transform, id), mask, marker, pattern, title, (a)ddress, link, script, style, use
+	desc, defs, g (style, transform, id), mask, marker, pattern, title, (a)ddress, link, script, style, use
 
 Usage: (assuming GOPATH is set)
 
 	go get github.com/gmlewis/ponoko2d
 	go install github.com/gmlewis/ponoko2d/...
 
-
 You can use godoc to browse the documentation from the command line:
 
 	$ godoc github.com/gmlewis/ponoko2d
-
 
 a minimal program, to generate SVG to standard output.
 
 	package main
 
 	import (
-		"github.com/gmlewis/ponoko2d"
 		"os"
+
+		svg "github.com/gmlewis/ponoko2d"
 	)
 
 	func main() {
@@ -67,8 +65,9 @@ Drawing in a web server: (http://localhost:2003/circle)
 
 	import (
 		"log"
-		"github.com/gmlewis/ponoko2d"
 		"net/http"
+
+		svg "github.com/gmlewis/ponoko2d"
 	)
 
 	func main() {
@@ -87,7 +86,7 @@ Drawing in a web server: (http://localhost:2003/circle)
 	  s.End()
 	}
 
-Functions and types
+# Functions and types
 
 Many functions use x, y to specify an object's location, and w, h to specify the object's width and height.
 Where applicable, a final optional argument specifies the style to be applied to the object.
@@ -96,9 +95,9 @@ series of name="value" pairs. For example: `"fill:none; opacity:0.3"` or  `fill=
 
 The SVG type:
 
-	type SVG struct {
-        Writer   io.Writer
-	}
+		type SVG struct {
+	        Writer   io.Writer
+		}
 
 Most operations are methods on this type, specifying the destination io.Writer.
 
@@ -121,6 +120,5 @@ The Filterspec type:
 	}
 
 is used to specify inputs and results for filter effects
-
 */
 package svg

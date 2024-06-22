@@ -1,4 +1,5 @@
 // funnel draws a funnel-like shape
+//go:build !appengine
 // +build !appengine
 
 package main
@@ -6,7 +7,7 @@ package main
 import (
 	"os"
 
-	"github.com/gmlewis/ponoko2d"
+	svg "github.com/gmlewis/ponoko2d"
 )
 
 var canvas = svg.New(os.Stdout)

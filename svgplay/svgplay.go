@@ -273,7 +273,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/gmlewis/ponoko2d"
+	svg "github.com/gmlewis/ponoko2d"
 )
 
 func rn(n int) int { return rand.Intn(n) }
@@ -304,7 +304,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/gmlewis/ponoko2d/float"
+	svg "github.com/gmlewis/ponoko2d/float"
 )
 
 func rn(n float64) float64 { return rand.Float64() * n }

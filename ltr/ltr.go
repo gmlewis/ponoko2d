@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/gmlewis/ponoko2d"
+	svg "github.com/gmlewis/ponoko2d"
 )
 
 var (
